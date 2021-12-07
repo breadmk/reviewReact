@@ -15,16 +15,23 @@ import './App.css';
    - 라이브러리 사용(부트스트랩,component-styled)
 */
 
+let a = 10; // 변수
+const b = 20; // 상수
+
 function App() {
-	let list = [ 1, 2, 3 ];
+	let c;
+	let d = undefined;
+	console.log(1, c);
+
+	const mystyle = {
+		color: 'red'
+	};
 
 	return (
 		<div>
-			<div>
-				{list.map((n) => {
-					return <h1>{n}</h1>;
-				})}
-			</div>
+			<div style={mystyle}>안녕{a === 10 ? '10입니다' : '10이 아닙니다.'}</div>
+			<h1 className='box-style'>해딩태크{b === 10 && '20입니다.'}</h1>
+			<hr />
 		</div>
 	);
 }
