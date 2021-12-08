@@ -53,6 +53,25 @@
     //    a5.forEach( (n)=>{console.log(n)} ); //리턴 못함.
         const b5 = a5.map( (n)=> {return n+10;} ); // const b5 = [...a5]; 같음.
         console.log(b5);
+
+        const data = {phone:"2222"}
+        const a6 = {id:1, name:"홍길동",gender:"남",age:17,phone:"1111"}
+        const b6 = {...a6,...data}; //둘다 전개연산자 사용해야함 // 뒤에 값이 앞에 값을 덮어씌움.
+        console.log(b6)
+
+        const users = [
+         {id:1, name:"구태모", phone:"2222"},
+         {id:2, name:"이대엽", phone:"3333"},
+         {id:3, name:"오승훈", phone:"4444"}
+        ];
+
+        const updateUserDto = {
+            id:2, name:"홍길동"
+        }
+
+        const newUsers = users.map( (u)=>{return u.id === updateUserDto.id ? {...u,...updateUserDto}:u} )
+        console.log("newUsers",newUsers);
+
     </script>
 </body>
 </html>
