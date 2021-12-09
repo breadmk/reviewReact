@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
 
 // 0. React 엔진 - 데이터변경감지에서 UI그려주는!!
 // 1. 실행방식 (index.html) - SPA
@@ -17,19 +16,14 @@ import { useState } from 'react';
 */
 
 function App() {
-   //    let number = 1; //상태 값이 아님
-   const [number, setNumber] = useState(1); //React안에 hooks 라이브러리 상태값이 됨.
-
-   const add = () => {
-      setNumber(number + 1); // React 한테 number 값 변경할께 라고 요청
-      console.log('add=>', number);
-   };
+   let list = [1, 2, 3];
 
    return (
       <div>
          <div>
-            <h1>숫자 : {number}</h1>
-            <button onClick={add}>더하기</button>
+            {list.map((n) => {
+               return <h1>{n}</h1>;
+            })}
          </div>
       </div>
    );
