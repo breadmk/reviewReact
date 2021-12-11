@@ -1,11 +1,8 @@
 import React from 'react';
+let num = 10;
 
-const sub = () => {
-	return (
-		<div>
-			<h1>Sub입니다.</h1>
-		</div>
-	);
-};
-
-export default sub;
+function Sub() {
+   return <div>sub</div>;
+}
+export { num };
+export default Sub;
