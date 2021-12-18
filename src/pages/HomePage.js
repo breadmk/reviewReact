@@ -23,17 +23,13 @@ const HomePage = () => {
    }, []);
 
    return (
-      <div>
-         <Header />
-         <Home
-            boards={boards}
-            setBoards={setBoards}
-            number={number}
-            setNumber={setNumber}
-            user={user}
-         />
-         <Footer />
-      </div>
+      <Home
+         boards={boards}
+         setBoards={setBoards}
+         number={number}
+         setNumber={setNumber}
+         user={user}
+      />
    );
 };
 

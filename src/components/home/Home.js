@@ -1,8 +1,15 @@
+import { Button } from 'react-bootstrap';
 import React from 'react';
 import styled from 'styled-components';
 
 const StyledDeleteButton = styled.button`
    color: ${(props) => (props.user.username === 'ssar' ? 'blue' : 'red')};
+`;
+
+//Style 확장 상속
+const StyledAddButton = styled(StyledDeleteButton)`
+   color: ${(props) => (props.user.username === 'ssar' ? 'blue' : 'red')};
+   background-color: green;
 `;
 
 //부모로 부터 받아온 어떤 데이터를 가지고 스타일링을 동적으로 할거라면?
@@ -15,14 +22,16 @@ const Home = (props) => {
 
    return (
       <div>
+         <Button variant="primary">Primary</Button>
          <h1>홈:{number} </h1>
-         <button
+         <StyledAddButton
+            user={user}
             onClick={() => {
                setNumber(number + 1);
             }}
          >
             번호증가
-         </button>
+         </StyledAddButton>
          <StyledDeleteButton
             user={user}
             onClick={() => {
