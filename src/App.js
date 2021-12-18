@@ -1,17 +1,12 @@
-import { Route } from 'react-router-dom';
 import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import ListPage from './pages/ListPage';
+
+//글쓰기,글삭제,글목록보기
 
 function App() {
    return (
       <div>
-         <Header />
-         <Route path="/" exact={true} component={HomePage} />
-         <Route path="/login" exact={true} component={LoginPage} />
-         <Footer />
+         <ListPage />
       </div>
    );
 }
