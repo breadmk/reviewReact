@@ -12,32 +12,75 @@ const StyledItemBoxDiv = styled.div`
 `;
 
 const ListPage = () => {
-   const handleWrite = () => {
+   const [no, setNo] = useState(6);
+
+   const handleWrite = (e) => {
       //ListPage의 setPosts에 무엇을 담을까요?
-      let post = { id: 6, title: '인풋값' };
+      e.preventDefault();
+      setPosts([...posts, { ...post, id: no }]);
+      setNo(no + 1);
       //   setPosts()
    };
-   const [posts, setPost] = useState([
-      { id: 1, title: '내용1' },
-      { id: 2, title: '내용2' },
-      { id: 3, title: '내용3' },
-      { id: 4, title: '내용4' },
-      { id: 5, title: '내용5' },
+   const [post, setPost] = useState({
+      id: no,
+      title: '',
+      content: '',
+   });
+
+   const handleChangeTitle = (e) => {
+      console.log(e.target.value);
+      setPost({ title: e.target.value });
+   };
+   const handleChangeContent = (e) => {
+      console.log(e);
+      setPost({ content: e.target.value });
+   };
+
+   const handleForm = (e) => {
+      // console.log(e.target.name);
+      // console.log(e.target.value);
+      // computed property names 문법 (키값 동적할당)
+      setPost({
+         ...post, // 다시 그려지면서 없어지기 때문에 다시 복사해놓고 해야함..
+         [e.target.name]: e.target.value,
+      }); // []키값 : value
+
+      // console.log(post.title);
+      // console.log(post.content);
+   };
+
+   const [posts, setPosts] = useState([
+      { id: 1, title: '제목1', content: '내용1' },
+      { id: 2, title: '제목2', content: '내용2' },
+      { id: 3, title: '제목3', content: '내용3' },
+      { id: 4, title: '제목4', content: '내용4' },
+      { id: 5, title: '제목5', content: '내용5' },
    ]);
    return (
       <div>
          <h1>리스트페이지</h1>
-         <form>
-            <input type="text" placeholder="제목을 입력하세요" />
-            <button type="button" onClick={handleWrite}>
-               글쓰기
-            </button>
+         <form onSubmit={handleWrite}>
+            <input
+               type="text"
+               placeholder="제목을 입력하세요"
+               value={post.title}
+               onChange={handleForm} // Change 함수는 input 태그의 변화가 왔을때 실현
+               name="title"
+            />
+            <input
+               type="text"
+               placeholder="내용을 입력하세요"
+               value={post.content}
+               onChange={handleForm}
+               name="content"
+            />
+            <button type="submit">글쓰기</button>
          </form>
          <hr />
          {posts.map((post) => (
             <StyledItemBoxDiv>
                <div>
-                  번호: {post.id} 제목: {post.title}
+                  번호: {post.id} | 제목: {post.title} | 내용: {post.content}
                </div>
                <button>삭제</button>
             </StyledItemBoxDiv>
